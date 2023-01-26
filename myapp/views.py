@@ -10,7 +10,7 @@ def my_arcticles(request):
 def arct_archive(request):
     return HttpResponse("This is archive view!")
 
-def users(request, user_number):
+def users(request, user_number=''):
     return HttpResponse(f"Hello! I'm user! My number is {user_number}")
 
 def article(request, article_number, slug_text=''):
