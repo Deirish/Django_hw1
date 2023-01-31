@@ -13,9 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
+from myapp.views import main, my_arcticles, arct_archive, users, article, regexp, symbol
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', main),
+    path('arcticles/', my_arcticles),
+    path('arcticles/archive/', arct_archive, name='arct_archive'),
+    path('users/', users),
+
+    path('article/<int:article_number>/', article, name='article_number'),
+    path('article/<int:article_number>/archive/', article, name='archive_number'),
+    path('article/<int:article_number>/<slug:slug_text>/', article, name='slug_text'),
+    path('users/<int:user_number>/', users, name='users_number'),
+
+    re_path(r'^([1-9a-f]{4}\-[0-9a-f]{6})/$', symbol, name='symbol'),
+    re_path(r'^(0(39|67|68|96|97|98|50|66|95|99|63|73|93)\d{7})/$', regexp),
+
 ]
+
