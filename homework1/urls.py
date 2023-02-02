@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.urls import path, re_path
 from myapp.views import main, my_arcticles, arct_archive, users, article, regexp, symbol
+from django.contrib import admin
 
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', main),
     path('arcticles/', my_arcticles),
     path('arcticles/archive/', arct_archive, name='arct_archive'),
